@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traffic Sign Recognition</title>
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+        }
+        
+        header.top {
+            background-color: #fff;
+            color: #070707;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        header.second {
+            background-color: #ffbd3b;
+            color: #070707; 
+            text-align: center;
+            padding: 10px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .video-container {
+            text-align: center;
+        }
+        
+        img.uploaded-video {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        
+        .upload-form {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .custom-file-input {
+            display: none;
+        }
+        
+        .custom-file-label {
+            background-color: #ffbd3b;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .btn-custom {
+            background-color: #ffbd3b;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .info-box {
+      border: 1px solid #cccccc;
+      border-radius: 8px;
+      padding: 10px;
+      width: 480px;
+      margin: 20px;
+      float: left;
+    }
+    .info-box img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin-bottom: 50px;
+    }
+    </style>
+</head>
+<body>
+<header class="top">
+    <a href="home" style="text-decoration: none; color: #333; text-align: center; display: block; margin: 20px;">
+        <h1 style="font-size: 34px; font-weight: bold; margin: 0;">
+          <strong>Traffic Sign Recognition</strong>
+        </h1>
+      </a>
+      </header>
+<header class="second">
+    <h1><strong>Output Video</strong></h1>
+</header>
+<div class="container">
+    <div class="video-container">
+        <img class="uploaded-video" src="{{ url_for('video') }}" alt="Uploaded video">
+    </div>
+    <div class="upload-form">
+        <form method="POST" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+            <label class="custom-file-label" for="file">Choose a file</label>
+            {{ form.file(id="file", class_="custom-file-input") }}
+            <button type="submit" name="favorite" value="x" class="btn-custom">Submit</button>
+        </form>
+    </div>
+</div>
+<div class="info-box">
+    <img src="static/images/1_chieu.png" alt="đường 1 chiều">
+    <h2>Biển Báo Cấm Đi Ngược Chiều</h2>
+    <p>Dùng để báo đường cấm các loại xe (cơ giới và thô sơ) đi vào theo chiều đặt biển, trừ các xe được ưu tiên theo quy định.</p>
+  </div>
+  <div class="info-box">
+    <img src="static/images/cam_trai.png" alt="Hình ảnh 2">
+    <h2>Biển Báo Cấm Rẽ Trái</h2>
+    <p>Biển có hiệu lực cấm các loại xe (cơ giới và thô sơ) rẽ sang phía trái trừ các xe được ưu tiên theo nhà nước quy định.</p>
+  </div>
+  <div class="info-box">
+    <img src="static/images/cam_phai.png" alt="Hình ảnh 2">
+    <h2>Biển Báo Cấm Rẽ Phải</h2>
+    <p>Biển có hiệu lực cấm các loại xe (cơ giới và thô sơ) rẽ sang phía phải trừ các xe được ưu tiên theo nhà nước quy định.</p>
+  </div>
+  <div class="info-box">
+    <img src="static/images/cam_do_va_dung_xe.png" alt="Hình ảnh 2">
+    <h2>Biến Báo Cấm Dừng và Đỗ Xe</h2>
+    <p>Biển có hiệu lực cấm các loại xe cơ giới chạy với tốc độ tối đa vượt quá trị số ghi trên biển trừ các xe được ưu tiên theo quy định.</p>
+  </div>
+  <div class="info-box">
+    <img src="static/images/cam_do_xe.png" alt="Hình ảnh 2">
+    <h2>Biển Báo Cấm Đỗ Xe</h2>
+    <p>Biển có hiệu lực cấm các loại xe cơ giới chạy với tốc độ tối đa vượt quá trị số ghi trên biển trừ các xe được ưu tiên theo quy định.</p>
+  </div>
+  <div class="info-box">
+    <img src="static/images/50.png" alt="Hình ảnh 2">
+    <h2>Biển Không Vượt Quá 50 km/h</h2>
+    <p>
+        Biển có hiệu lực cấm các loại xe cơ giới chạy với tốc độ tối đa vượt quá trị số ghi trên biển trừ các xe được ưu tiên theo quy định.</p>
+  </div>
+  <div class="info-box">
+    <img src="static/images/60.png" alt="Hình ảnh 2">
+    <h2>Biển Không Vượt Quá 60 km/h</h2>
+    <p>Biển có hiệu lực cấm các loại xe cơ giới chạy với tốc độ tối đa vượt quá trị số ghi trên biển trừ các xe được ưu tiên theo quy định.</p>
+  </div>
+  <div class="info-box">
+    <img src="static/images/phai.png" alt="Hình ảnh 2">
+    <h2>Biển Báo Chỉ Được Rẻ Phải</h2>
+    <p>Biển báo hiệu các xe chỉ được rẽ phải là biển báo các xe chỉ được rẽ phải (trừ xe được quyền ưu tiên theo quy định).</p>
+  </div>
+  <div class="info-box">
+    <img src="static/images/trai.png" alt="Hình ảnh 2">
+    <h2>Biển Báo Chỉ Được Rẻ Trái</h2>
+    <p>Biển báo hiệu các xe chỉ được rẽ trái là biển báo các xe chỉ được rẽ trái (trừ xe được quyền ưu tiên theo quy định).</p>
+  </div>
+  <div class="info-box">
+    <img src="static/images/stop.png" alt="Hình ảnh 2">
+    <h2>Biển Báo Hiệu Dừng Lại</h2>
+    <p>Biển báo hiệu dừng lại là biển có hiệu lực buộc các xe cơ giới và thô sơ kể cả các xe được ưu tiên quy định dừng lại.</p>
+  </div>
+  <div class="info-box">
+    <img src="static/images/di_thang_.jpg" alt="Hình ảnh 2">
+    <h2>Biển Báo Đường Một Chiều</h2>
+    <p>Biển báo đường một chiều là biển đặt sau ngã ba và ngã tư, biển chỉ dẫn những đoạn đường xe chạy một chiều.</p>
+  </div>
+  <div class="info-box">
+    <img src="static/images/uu_tien.png" alt="Hình ảnh 2">
+    <h2>Biển Bắt Đầu Đường Ưu Tiên</h2>
+    <p>Biển báo bắt đầu đường ưu tiên là biển báo để biểu thị ưu tiên cho các phương tiện trên đường biển này được đi trước.</p>
+  </div>
+</body>
+</html>
